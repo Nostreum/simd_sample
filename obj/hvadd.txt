@@ -1,0 +1,199 @@
+
+hvadd:	file format Mach-O 64-bit x86-64
+
+Disassembly of section __TEXT,__text:
+__text:
+100000e30:	c5 f8 c6 c8 b1 	vshufps	$177, %xmm0, %xmm0, %xmm1
+100000e35:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e39:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000e3e:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e42:	c3 	retq
+100000e43:	66 66 66 66 2e 0f 1f 84 00 00 00 00 00 	nopw	%cs:(%rax,%rax)
+100000e50:	c5 f8 c6 c8 b1 	vshufps	$177, %xmm0, %xmm0, %xmm1
+100000e55:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e59:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000e5e:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e62:	c3 	retq
+100000e63:	66 66 66 66 2e 0f 1f 84 00 00 00 00 00 	nopw	%cs:(%rax,%rax)
+100000e70:	c5 fa 16 c8 	vmovshdup	%xmm0, %xmm1
+100000e74:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e78:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000e7d:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e81:	c3 	retq
+
+_sse_hvadd:
+100000e30:	c5 f8 c6 c8 b1 	vshufps	$177, %xmm0, %xmm0, %xmm1
+100000e35:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e39:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000e3e:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e42:	c3 	retq
+100000e43:	66 66 66 66 2e 0f 1f 84 00 00 00 00 00 	nopw	%cs:(%rax,%rax)
+
+_sse2_hvadd:
+100000e50:	c5 f8 c6 c8 b1 	vshufps	$177, %xmm0, %xmm0, %xmm1
+100000e55:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e59:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000e5e:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e62:	c3 	retq
+100000e63:	66 66 66 66 2e 0f 1f 84 00 00 00 00 00 	nopw	%cs:(%rax,%rax)
+
+_sse3_hvadd:
+100000e70:	c5 fa 16 c8 	vmovshdup	%xmm0, %xmm1
+100000e74:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e78:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000e7d:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000e81:	c3 	retq
+Disassembly of section __TEXT,__text_startup:
+_main:
+100000e90:	48 8d 3d 93 00 00 00 	leaq	147(%rip), %rdi
+100000e97:	48 83 ec 18 	subq	$24, %rsp
+100000e9b:	b8 01 00 00 00 	movl	$1, %eax
+100000ea0:	c5 f8 28 0d a8 00 00 00 	vmovaps	168(%rip), %xmm1
+100000ea8:	c5 f0 c6 c1 b1 	vshufps	$177, %xmm1, %xmm1, %xmm0
+100000ead:	c5 f8 58 c1 	vaddps	%xmm1, %xmm0, %xmm0
+100000eb1:	c5 f8 c6 c8 4e 	vshufps	$78, %xmm0, %xmm0, %xmm1
+100000eb6:	c5 f8 58 c9 	vaddps	%xmm1, %xmm0, %xmm1
+100000eba:	c5 f2 5a c9 	vcvtss2sd	%xmm1, %xmm1, %xmm1
+100000ebe:	c5 f9 28 c1 	vmovapd	%xmm1, %xmm0
+100000ec2:	c5 fb 11 4c 24 08 	vmovsd	%xmm1, 8(%rsp)
+100000ec8:	e8 3d 00 00 00 	callq	61
+100000ecd:	c5 fb 10 4c 24 08 	vmovsd	8(%rsp), %xmm1
+100000ed3:	b8 01 00 00 00 	movl	$1, %eax
+100000ed8:	48 8d 3d 56 00 00 00 	leaq	86(%rip), %rdi
+100000edf:	c5 f9 28 c1 	vmovapd	%xmm1, %xmm0
+100000ee3:	e8 22 00 00 00 	callq	34
+100000ee8:	c5 fb 10 4c 24 08 	vmovsd	8(%rsp), %xmm1
+100000eee:	b8 01 00 00 00 	movl	$1, %eax
+100000ef3:	48 8d 3d 46 00 00 00 	leaq	70(%rip), %rdi
+100000efa:	c5 f9 28 c1 	vmovapd	%xmm1, %xmm0
+100000efe:	e8 07 00 00 00 	callq	7
+100000f03:	31 c0 	xorl	%eax, %eax
+100000f05:	48 83 c4 18 	addq	$24, %rsp
+100000f09:	c3 	retq
+Disassembly of section __TEXT,__stubs:
+__stubs:
+100000f0a:	ff 25 00 01 00 00 	jmpq	*256(%rip)
+Disassembly of section __TEXT,__stub_helper:
+__stub_helper:
+100000f10:	4c 8d 1d f1 00 00 00 	leaq	241(%rip), %r11
+100000f17:	41 53 	pushq	%r11
+100000f19:	ff 25 e1 00 00 00 	jmpq	*225(%rip)
+100000f1f:	90 	nop
+100000f20:	68 00 00 00 00 	pushq	$0
+100000f25:	e9 e6 ff ff ff 	jmp	-26 <__stub_helper>
+Disassembly of section __TEXT,__cstring:
+__cstring:
+100000f2a:	53 	pushq	%rbx
+100000f2b:	53 	pushq	%rbx
+100000f2c:	45 31 20 	xorl	%r12d, (%r8)
+100000f2f:	3a 20 	cmpb	(%rax), %ah
+100000f31:	25 66 0a 00 53 	andl	$1392511590, %eax
+100000f36:	53 	pushq	%rbx
+100000f37:	45 32 20 	xorb	(%r8), %r12b
+100000f3a:	3a 20 	cmpb	(%rax), %ah
+100000f3c:	25 66 0a 00 53 	andl	$1392511590, %eax
+100000f41:	53 	pushq	%rbx
+100000f42:	45 33 20 	xorl	(%r8), %r12d
+100000f45:	3a 20 	cmpb	(%rax), %ah
+100000f47:	25  <unknown>
+100000f48:	66 0a 00 	orb	(%rax), %al
+Disassembly of section __TEXT,__const:
+__const:
+100000f50:	00 00 	addb	%al, (%rax)
+100000f52:	c0 41 00 00 	rolb	$0, (%rcx)
+100000f56:	10 41 00 	adcb	%al, (%rcx)
+100000f59:	00 40 40 	addb	%al, 64(%rax)
+100000f5c:	00 00 	addb	%al, (%rax)
+100000f5e:	00 40  <unknown>
+Disassembly of section __TEXT,__eh_frame:
+__eh_frame:
+100000f60:	14 00 	adcb	$0, %al
+100000f62:	00 00 	addb	%al, (%rax)
+100000f64:	00 00 	addb	%al, (%rax)
+100000f66:	00 00 	addb	%al, (%rax)
+100000f68:	01 7a 52 	addl	%edi, 82(%rdx)
+100000f6b:	00 01 	addb	%al, (%rcx)
+100000f6d:	78 10 	js	16 <__eh_frame+0x1F>
+100000f6f:	01 10 	addl	%edx, (%rax)
+100000f71:	0c 07 	orb	$7, %al
+100000f73:	08 90 01 00 00 1c 	orb	%dl, 469762049(%rax)
+100000f79:	00 00 	addb	%al, (%rax)
+100000f7b:	00 1c 00 	addb	%bl, (%rax,%rax)
+100000f7e:	00 00 	addb	%al, (%rax)
+100000f80:	b0 fe 	movb	$-2, %al
+100000f82:	ff ff  <unknown>
+100000f84:	ff ff  <unknown>
+100000f86:	ff ff  <unknown>
+100000f88:	13 00 	adcl	(%rax), %eax
+100000f8a:	00 00 	addb	%al, (%rax)
+100000f8c:	00 00 	addb	%al, (%rax)
+100000f8e:	00 00 	addb	%al, (%rax)
+100000f90:	00 00 	addb	%al, (%rax)
+100000f92:	00 00 	addb	%al, (%rax)
+100000f94:	00 00 	addb	%al, (%rax)
+100000f96:	00 00 	addb	%al, (%rax)
+100000f98:	1c 00 	sbbb	$0, %al
+100000f9a:	00 00 	addb	%al, (%rax)
+100000f9c:	3c 00 	cmpb	$0, %al
+100000f9e:	00 00 	addb	%al, (%rax)
+100000fa0:	b0 fe 	movb	$-2, %al
+100000fa2:	ff ff  <unknown>
+100000fa4:	ff ff  <unknown>
+100000fa6:	ff ff  <unknown>
+100000fa8:	13 00 	adcl	(%rax), %eax
+100000faa:	00 00 	addb	%al, (%rax)
+100000fac:	00 00 	addb	%al, (%rax)
+100000fae:	00 00 	addb	%al, (%rax)
+100000fb0:	00 00 	addb	%al, (%rax)
+100000fb2:	00 00 	addb	%al, (%rax)
+100000fb4:	00 00 	addb	%al, (%rax)
+100000fb6:	00 00 	addb	%al, (%rax)
+100000fb8:	1c 00 	sbbb	$0, %al
+100000fba:	00 00 	addb	%al, (%rax)
+100000fbc:	5c 	popq	%rsp
+100000fbd:	00 00 	addb	%al, (%rax)
+100000fbf:	00 b0 fe ff ff ff 	addb	%dh, -2(%rax)
+100000fc5:	ff ff  <unknown>
+100000fc7:	ff 12 	callq	*(%rdx)
+100000fc9:	00 00 	addb	%al, (%rax)
+100000fcb:	00 00 	addb	%al, (%rax)
+100000fcd:	00 00 	addb	%al, (%rax)
+100000fcf:	00 00 	addb	%al, (%rax)
+100000fd1:	00 00 	addb	%al, (%rax)
+100000fd3:	00 00 	addb	%al, (%rax)
+100000fd5:	00 00 	addb	%al, (%rax)
+100000fd7:	00 24 00 	addb	%ah, (%rax,%rax)
+100000fda:	00 00 	addb	%al, (%rax)
+100000fdc:	7c 00 	jl	0 <__eh_frame+0x7E>
+100000fde:	00 00 	addb	%al, (%rax)
+100000fe0:	b0 fe 	movb	$-2, %al
+100000fe2:	ff ff  <unknown>
+100000fe4:	ff ff  <unknown>
+100000fe6:	ff ff  <unknown>
+100000fe8:	7a 00 	jp	0 <__eh_frame+0x8A>
+100000fea:	00 00 	addb	%al, (%rax)
+100000fec:	00 00 	addb	%al, (%rax)
+100000fee:	00 00 	addb	%al, (%rax)
+100000ff0:	00 04 0b 	addb	%al, (%rbx,%rcx)
+100000ff3:	00 00 	addb	%al, (%rax)
+100000ff5:	00 0e 	addb	%cl, (%rsi)
+100000ff7:	20 04 6e 	andb	%al, (%rsi,%rbp,2)
+100000ffa:	00 00 	addb	%al, (%rax)
+100000ffc:	00 0e 	addb	%cl, (%rsi)
+100000ffe:	08 00 	orb	%al, (%rax)
+Disassembly of section __DATA,__nl_symbol_ptr:
+__nl_symbol_ptr:
+100001000:	00 00 	addb	%al, (%rax)
+100001002:	00 00 	addb	%al, (%rax)
+100001004:	00 00 	addb	%al, (%rax)
+100001006:	00 00 	addb	%al, (%rax)
+100001008:	00 00 	addb	%al, (%rax)
+10000100a:	00 00 	addb	%al, (%rax)
+10000100c:	00 00 	addb	%al, (%rax)
+10000100e:	00 00 	addb	%al, (%rax)
+Disassembly of section __DATA,__la_symbol_ptr:
+__la_symbol_ptr:
+100001010:	20 0f 	andb	%cl, (%rdi)
+100001012:	00 00 	addb	%al, (%rax)
+100001014:	01 00 	addl	%eax, (%rax)
+100001016:	00 00 	addb	%al, (%rax)
