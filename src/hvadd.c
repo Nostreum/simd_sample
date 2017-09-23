@@ -30,7 +30,7 @@ f32 sse3_hvadd(float128 v){
 
 #ifdef __AVX__
 
-f32 avx_hvadd(float256 v){
+f32avx avx_hvadd(float256 v){
 
 	float128 v_low = _mm256_castps256_ps128(v);
 	float128 v_high = _mm256_extractf128_ps(v, 1); 
@@ -41,32 +41,16 @@ f32 avx_hvadd(float256 v){
 
 #endif
 
-#ifdef __AVX512__
-
-
-f32 avx512_hvadd(float512 v){
-
-	return _mm512_reduce_add_ps(v);
-
-}
-
-#endif
-
 void hvadd_main(int argc, char *argv[]){
-
-	int i;
 	
 	float128 v = _mm_set_ps(2, 3, 9, 24);
 	float256 v2 = _mm256_set_ps(2, 3, 9, 24, 1, 0, 11, 7);
-	float512 v3 = _mm512_set_ps(2, 3, 9, 24, 1, 0, 11, 7, 2, 3, 4, 3, 1, 0, 14, 7);
 
 	f32 res_sse = sse_hvadd(v);
 	f32 res_sse3 = sse3_hvadd(v);
 	f32 res_avx = avx_hvadd(v2);
-	//f32 res_avx512 = avx512_hvadd(v3);
 
 	print128(v);printf(" => SSE : %f\n", res_sse);
 	print128(v);printf(" => SSE3 t: %f\n", res_sse3);
 	print256(v2);printf(" => AVX : %f\n", res_avx);
-	//printf("AVX512\t: %f\n", res_avx512);
 }
